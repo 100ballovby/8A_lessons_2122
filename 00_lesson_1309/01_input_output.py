@@ -16,3 +16,11 @@ print(number_1 / number_2)  # операция деления 10 / 3 = 3.3333333
 print(number_1 // number_2)  # операция целочисленного деления 10 // 3 = 3
 print(number_1 % number_2)  # операция возврата остатка от деления 10 % 3 = 1
 
+# операторы сравнения
+print(number_1 > number_2)  # операция больше
+print(number_1 < number_2)  # операция меньше
+print(number_1 >= number_2)  # операция больше или равно
+print(number_1 <= number_2)  # операция меньше или равно
+print(number_1 != number_2)  # операция не равно
+print(number_1 == number_2)  # операция равенство
+
