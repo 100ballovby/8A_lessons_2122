@@ -9,7 +9,7 @@ screen = pg.display.set_mode((W, H))  # 640pх - ширина и 480px - выс�
 clock = pg.time.Clock()  # добавление задержки в главный цикл
 
 # настраиваю появление квадрата
-x1 = W // 3  # начальные координаты появления объекта на экране
+x1 = W // 2  # начальные координаты появления объекта на экране
 y1 = H // 2  # начальные координаты появления объекта на экране
 x1_change = 0  # смена положения объекта на экране
 y1_change = 0  # смена положения объекта на экране
@@ -30,23 +30,27 @@ while not finished:
         elif event.type == pg.KEYDOWN:
             if event.key == pg.K_UP:
                 x1_change = 0
-                y1_change = -5
+                y1_change = -block
             elif event.key == pg.K_DOWN:
                 x1_change = 0
-                y1_change = 5
+                y1_change = block
             elif event.key == pg.K_LEFT:
-                x1_change = -5
+                x1_change = -block
                 y1_change = 0
             elif event.key == pg.K_RIGHT:
-                x1_change = 5
+                x1_change = block
                 y1_change = 0
             elif event.key == pg.K_ESCAPE:  # если нажали на esc
                 x1_change = y1_change = 0  # остановить
 
     # рисуем тут
     screen.fill((255, 255, 255))  # заливаю экран цветом
-    rect(screen, (84, 140, 214), [x1, y1, 50, 50])
+    rect(screen, (84, 140, 214), [x1, y1, block, block])  # игровой персонаж
+    rect(screen, (227, 113, 166), [enemy_x, enemy_y, block, block])
     pg.display.update()
+
+    if x1 == enemy_x and y1 == enemy_y:
+        print('HIT!')
 
     x1 += x1_change
     y1 += y1_change
