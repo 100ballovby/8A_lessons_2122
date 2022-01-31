@@ -13,8 +13,8 @@ x1 = W // 2  # начальные координаты появления объ
 y1 = H // 2  # начальные координаты появления объекта на экране
 x1_change = 0  # смена положения объекта на экране
 y1_change = 0  # смена положения объекта на экране
-block = 20
-speed = 20
+block = 10
+speed = 30
 
 # неигровой персонаж
 enemy_x = round(randrange(0, W - block) / 10) * 10
@@ -50,7 +50,8 @@ while not finished:
     pg.display.update()
 
     if x1 == enemy_x and y1 == enemy_y:
-        print('HIT!')
+        enemy_x = round(randrange(0, W - block) / 10) * 10
+        enemy_y = round(randrange(0, H - block) / 10) * 10
 
     x1 += x1_change
     y1 += y1_change
