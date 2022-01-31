@@ -3,8 +3,8 @@ from pygame.draw import rect, circle, polygon
 from random import randrange
 
 
-W = 640
-H = 640
+W = 400
+H = 400
 screen = pg.display.set_mode((W, H))  # 640pх - ширина и 480px - высота
 clock = pg.time.Clock()  # добавление задержки в главный цикл
 
@@ -14,7 +14,7 @@ y1 = H // 2  # начальные координаты появления объ
 x1_change = 0  # смена положения объекта на экране
 y1_change = 0  # смена положения объекта на экране
 block = 10
-speed = 30
+speed = 5
 
 # неигровой персонаж
 enemy_x = round(randrange(0, W - block) / 10) * 10
