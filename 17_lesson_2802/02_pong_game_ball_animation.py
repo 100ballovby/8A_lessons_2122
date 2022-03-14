@@ -63,6 +63,23 @@ def opponent_ai(obj, s_height, enm, speed):
     elif enm.bottom >= s_height:  # если платформа ушла за нижнюю границу экрана
         enm.bottom = s_height  # остановить ее на нижней границе
 
+
+def platform_animation(plr, speed, height):
+    """
+    Функция отвечает за передвижение платформы-игрока
+    :param plr: Объект-игрок
+    :param speed: Скорость передвижения
+    :param height: Высота экрана
+    :return: None
+    """
+    plr.y += speed
+
+    if plr.bottom >= height:
+        plr.bottom = height
+    elif plr.top <= 0:
+        plr.top = 0
+
+
 W = 1280
 H = 960
 screen = pg.display.set_mode((W, H))
@@ -82,6 +99,7 @@ opponent = pg.Rect(10, H // 2, 10, 150)
 ball_speed_x = 8
 ball_speed_y = 8
 opponent_speed = 8
+p_speed = 0
 
 finished = False
 while not finished:
@@ -89,6 +107,16 @@ while not finished:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             finished = True
+        if event.type == pg.KEYDOWN:
+            if event.key == pg.K_UP:
+                p_speed -= 8
+            if event.key == pg.K_DOWN:
+                p_speed += 8
+        if event.type == pg.KEYUP:
+            if event.key == pg.K_UP:
+                p_speed += 8
+            if event.key == pg.K_DOWN:
+                p_speed -= 8
 
     # Visuals
     screen.fill(bg_color)
@@ -100,5 +128,6 @@ while not finished:
     # Game logic
     ball_moving(ball, W, H, platform, opponent)
     opponent_ai(ball, H, opponent, opponent_speed)
+    platform_animation(platform, p_speed, H)
 
     pg.display.update()
