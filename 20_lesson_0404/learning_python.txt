@@ -1,0 +1,2 @@
+In Python you can use lists methods
+In Python you can sort a string
